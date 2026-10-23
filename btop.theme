@@ -1,0 +1,80 @@
+# NOSTROMO — btop theme
+# Dim green at rest, phosphor under load, amber at pressure, orange-red at the
+# limit. Opaque background; square boxes come from btop itself.
+
+theme[main_bg]="#0a0c09"
+theme[main_fg]="#5fd16b"
+theme[title]="#7dff8a"
+theme[hi_fg]="#7dff8a"
+
+theme[selected_bg]="#7dff8a"
+theme[selected_fg]="#0a0c09"
+theme[inactive_fg]="#43994f"
+theme[graph_text]="#c9bfa5"
+theme[meter_bg]="#141812"
+theme[proc_misc]="#43994f"
+
+theme[cpu_box]="#2f7a3a"
+theme[mem_box]="#2f7a3a"
+theme[net_box]="#2f7a3a"
+theme[proc_box]="#2f7a3a"
+theme[div_line]="#1b2a1d"
+
+# Temperature: normal -> warm -> hot
+theme[temp_start]="#43994f"
+theme[temp_mid]="#ffb000"
+theme[temp_end]="#ff5f1f"
+
+# CPU: idle -> working -> saturated
+theme[cpu_start]="#2f7a3a"
+theme[cpu_mid]="#7dff8a"
+theme[cpu_end]="#ffb000"
+
+# Memory / disk: free is quiet, used climbs into amber.
+theme[free_start]="#2f7a3a"
+theme[free_mid]="#43994f"
+theme[free_end]="#5fd16b"
+
+theme[cached_start]="#2f7a3a"
+theme[cached_mid]="#43994f"
+theme[cached_end]="#5fd16b"
+
+theme[available_start]="#2f7a3a"
+theme[available_mid]="#43994f"
+theme[available_end]="#5fd16b"
+
+theme[used_start]="#43994f"
+theme[used_mid]="#7dff8a"
+theme[used_end]="#ffb000"
+
+# Network
+theme[download_start]="#2f7a3a"
+theme[download_mid]="#7dff8a"
+theme[download_end]="#ffb000"
+
+theme[upload_start]="#2f7a3a"
+theme[upload_mid]="#5fd16b"
+theme[upload_end]="#ffb000"
+
+# Process box: threads, memory, CPU
+theme[process_start]="#43994f"
+theme[process_mid]="#7dff8a"
+theme[process_end]="#ffb000"
+
+# Followed process and banner chrome
+theme[followed_bg]="#1b2a1d"
+theme[followed_fg]="#a6ffae"
+theme[proc_banner_bg]="#141812"
+theme[proc_banner_fg]="#7dff8a"
+theme[proc_pause_bg]="#1b2a1d"
+theme[proc_follow_bg]="#1b2a1d"
+
+# General graph gradient
+theme[gradient_color_0]="#0a0c09"
+theme[gradient_color_1]="#141812"
+theme[gradient_color_2]="#2f7a3a"
+theme[gradient_color_3]="#43994f"
+theme[gradient_color_4]="#5fd16b"
+theme[gradient_color_5]="#7dff8a"
+theme[gradient_color_6]="#ffb000"
+theme[gradient_color_7]="#ff5f1f"

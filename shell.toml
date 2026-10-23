@@ -1,0 +1,146 @@
+# NOSTROMO — Omarchy 4.x shell surfaces.
+#
+# Opaque CRT panels, square chrome (the shell mirrors Hyprland's rounding = 0),
+# thin phosphor borders, and one inverted accent row for the current selection.
+# No alpha below 1.0 on any surface; the launcher/menu scrim is the only dim
+# layer, and it sits behind the card rather than inside it.
+
+[bar]
+background       = "#0a0c09"
+background-alpha = 1.0
+text             = "#5fd16b"
+# Recording, updates and other "look at me" modules: amber, not red.
+active           = "#ffb000"
+scale-with-font  = true
+size-horizontal  = 26
+size-vertical    = 28
+
+[hyprland]
+active-border            = "#7dff8a"
+active-border-foreground = "#7dff8a"
+
+[controls]
+# Idle chrome is dim green; focus and selection are full phosphor.
+normal-color        = "#43994f"
+normal-fill-alpha   = 0.06
+normal-border       = "#2f7a3a"
+normal-border-width = 1
+normal-border-alpha = 0.55
+
+hover-cursor-color        = "#a6ffae"
+hover-cursor-fill-alpha   = 0.10
+hover-cursor-border       = "#7dff8a"
+hover-cursor-border-width = 1
+hover-cursor-border-alpha = 0.70
+
+focus-color        = "#7dff8a"
+focus-fill-alpha   = 0.14
+focus-border       = "#7dff8a"
+focus-border-width = 1
+focus-border-alpha = 1.0
+
+selected-color        = "#7dff8a"
+selected-fill-alpha   = 0.18
+selected-border       = "#7dff8a"
+selected-border-width = 1
+selected-border-alpha = 0.80
+
+pressed-fill-alpha   = 0.24
+selection-fill-alpha = 0.35
+
+[spacing]
+scale           = 1.0
+scale-with-font = true
+
+[font]
+base-size = 12
+
+[popups]
+background       = "#0a0c09"
+background-alpha = 1.0
+text             = "#5fd16b"
+border           = "#7dff8a"
+border-alpha     = 1.0
+border-width     = 2
+
+[tooltip]
+background       = "#0a0c09"
+background-alpha = 1.0
+text             = "#5fd16b"
+border           = "#2f7a3a"
+border-alpha     = 1.0
+border-width     = 1
+
+[notifications]
+background       = "#0a0c09"
+background-alpha = 1.0
+text             = "#5fd16b"
+border           = "#7dff8a"
+border-alpha     = 1.0
+border-width     = 2
+countdown        = "#7dff8a"
+
+[launcher]
+background                = "#0a0c09"
+background-alpha          = 1.0
+text                      = "#5fd16b"
+border                    = "#7dff8a"
+border-alpha              = 1.0
+border-width              = 2
+scrim                     = "#0a0c09"
+scrim-alpha               = 0.55
+# Inverted current row: phosphor fill, near-black text.
+selected-background       = "#7dff8a"
+selected-background-alpha = 1.0
+selected-text             = "#0a0c09"
+selected-border           = "#7dff8a"
+selected-border-alpha     = 1.0
+
+[menu]
+background                = "#0a0c09"
+background-alpha          = 1.0
+text                      = "#5fd16b"
+border                    = "#7dff8a"
+border-alpha              = 1.0
+border-width              = 2
+scrim                     = "#0a0c09"
+scrim-alpha               = 0.55
+selected-background       = "#7dff8a"
+selected-background-alpha = 1.0
+selected-text             = "#0a0c09"
+selected-border           = "#7dff8a"
+selected-border-alpha     = 1.0
+
+[polkit]
+background       = "#0a0c09"
+background-alpha = 1.0
+text             = "#5fd16b"
+text-error       = "#ff5f1f"
+border           = "#7dff8a"
+border-error     = "#ff5f1f"
+border-alpha     = 1.0
+border-width     = 2
+scrim            = "#0a0c09"
+scrim-alpha      = 0.60
+accent           = "#7dff8a"
+
+[lock]
+background       = "#0a0c09"
+background-alpha = 1.0
+text             = "#5fd16b"
+placeholder      = "#43994f"
+text-error       = "#ff5f1f"
+border           = "#7dff8a"
+border-active    = "#7dff8a"
+border-error     = "#ff5f1f"
+border-alpha     = 1.0
+border-width     = 2
+selection        = "#7dff8a"
+selection-alpha  = 0.35
+
+[image-picker]
+text                    = "#5fd16b"
+selected-border         = "#7dff8a"
+selected-border-alpha   = 1.0
+unselected-border       = "#5fd16b"
+unselected-border-alpha = 0.28

@@ -1,0 +1,78 @@
+# NOSTROMO — Omarchy 4.x palette
+#
+# A used-future spaceship terminal: near-black, phosphor green, amber for
+# warning, orange-red for critical. Teal and beige are supporting ANSI colors.
+#
+# Omarchy's resolver rewrites three keys when the semantic form is present:
+#   color0  -> background
+#   color7  -> foreground
+#   cursor  -> bright_foreground
+# The raised surface and beige plastic therefore live in lighter_background
+# and light_foreground / color15 rather than in color0 / color7.
+#
+# `muted` is deliberately lighter than color8: color8 is the inactive border
+# and ANSI bright-black, while muted is body-adjacent secondary text that must
+# clear WCAG AA on both background and the raised surface.
+
+mode = "dark"
+
+accent               = "#7dff8a"
+cursor               = "#7dff8a"
+foreground           = "#5fd16b"
+background           = "#0a0c09"
+selection_foreground = "#0a0c09"
+selection_background = "#7dff8a"
+
+# ANSI normal (color0 and color7 are resolved to background/foreground)
+color0  = "#0a0c09"   # black  / terminal background
+color1  = "#ff5f1f"   # red    -> critical / error only
+color2  = "#7dff8a"   # green  -> phosphor
+color3  = "#ffb000"   # yellow -> amber warning
+color4  = "#4a8f89"   # blue   -> Isolation teal (lifted from #3f7f7a for AA)
+color5  = "#b58a5a"   # magenta -> rusty tan
+color6  = "#5fb8a8"   # cyan
+color7  = "#5fd16b"   # white  -> primary phosphor text
+
+# ANSI bright
+color8  = "#2f7a3a"   # bright black -> dim green / inactive border
+color9  = "#ff8a50"
+color10 = "#a6ffae"
+color11 = "#ffd060"
+color12 = "#5fa8a0"
+color13 = "#d9b88a"
+color14 = "#8fd8cc"
+color15 = "#e6dcc3"
+
+# Semantic palette consumed by Omarchy's generated configs and QML shell
+selection        = "#1b2a1d"   # quiet green-tinted UI surface
+muted            = "#43994f"   # secondary text, AA on background and raised
+dark_background  = "#070908"
+darker_background = "#040504"
+lighter_background = "#141812" # raised surface / titlebars
+dark_foreground  = "#2f7a3a"
+light_foreground = "#c9bfa5"   # beige plastic
+bright_foreground = "#7dff8a"  # cursor + ANSI bright white
+
+red     = "#ff5f1f"
+orange  = "#ff8a50"
+yellow  = "#ffb000"
+green   = "#7dff8a"
+cyan    = "#5fb8a8"
+blue    = "#4a8f89"
+magenta = "#b58a5a"
+brown   = "#8a6540"
+
+bright_red     = "#ff8a50"
+bright_yellow  = "#ffd060"
+bright_green   = "#a6ffae"
+bright_cyan    = "#8fd8cc"
+bright_blue    = "#5fa8a0"
+bright_magenta = "#d9b88a"
+
+# Hyprland borders, also reused by the Omarchy shell's shared border tokens
+hyprland_active_border   = "rgba(7dff8aee)"
+hyprland_inactive_border = "rgba(2f7a3aee)"
+
+# Legacy consumers (terminal tab strips, older templates)
+active_border_color  = "#7dff8a"
+active_tab_background = "#7dff8a"

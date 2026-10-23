@@ -1,0 +1,48 @@
+/* NOSTROMO — Omarchy 2.x/3.x Waybar colors (legacy).
+ *
+ * Omarchy 4 uses its QML bar instead; this file is ignored there.
+ * Omarchy's own style.css imports this file and already supplies the layout,
+ * so only the palette and the few state overrides live here.
+ */
+
+@define-color background #0a0c09;
+@define-color foreground #5fd16b;
+
+@define-color accent     #7dff8a;
+@define-color dim        #2f7a3a;
+@define-color warning    #ffb000;
+@define-color critical   #ff5f1f;
+
+/* Flat bar with a single dim phosphor rule under it. */
+window#waybar {
+    border-bottom: 2px solid @dim;
+    border-radius: 0;
+}
+
+/* Square workspaces; the active one is an inverted phosphor block. */
+#workspaces button {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#workspaces button.active {
+    background-color: @accent;
+    color: @background;
+}
+
+#workspaces button:hover {
+    background-color: @dim;
+    color: @foreground;
+}
+
+/* Warning / critical states. */
+#battery.critical,
+#battery.critical.discharging,
+#network.disconnected,
+#custom-update {
+    color: @critical;
+}
+
+#custom-screenrecording-indicator.active {
+    color: @warning;
+}

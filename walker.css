@@ -1,0 +1,86 @@
+/* NOSTROMO — Omarchy 2.x/3.x Walker colors (legacy).
+ *
+ * Omarchy 4 uses its QML launcher instead; this file is ignored there.
+ * Selectors follow Walker's own DOM (box-wrapper / search-container / input /
+ * item-box), not the older #box ids.
+ */
+
+@define-color selected-text #0a0c09;
+@define-color text          #5fd16b;
+@define-color base          #0a0c09;
+@define-color border        #7dff8a;
+@define-color foreground    #5fd16b;
+@define-color background    #0a0c09;
+
+window * {
+    all: unset;
+    color: @text;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+}
+
+/* Icons are hidden: this is a text-first terminal launcher. */
+window .normal-icons,
+window .large-icons,
+window .item-image,
+window .symbols {
+    -gtk-icon-size: 0px;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+/* Opaque boxed card, square corners, thin phosphor border. */
+window .box-wrapper {
+    background: alpha(@base, 1);
+    border: 2px solid alpha(@border, 0.55);
+    border-radius: 0;
+    padding: 4px;
+    margin: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+window .search-container {
+    border: 0;
+    border-radius: 0;
+    padding: 4px 6px;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+window .input {
+    background: transparent;
+    color: @text;
+    border-radius: 0;
+}
+
+window .preview {
+    border: 1px solid alpha(@border, 0.4);
+    border-radius: 0;
+    background: alpha(@base, 1);
+    color: @text;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+/* Inverted phosphor selection. */
+child:selected .item-box,
+child:hover .item-box {
+    background-color: @border;
+    color: @selected-text;
+    border-radius: 0;
+}
+
+child:selected .item-box *,
+child:hover .item-box * {
+    color: @selected-text;
+}
