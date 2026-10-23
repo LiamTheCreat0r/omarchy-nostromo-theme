@@ -165,7 +165,7 @@ rules, inactive chrome, and decorative labels — never for body copy.
 | --- | --- |
 | `colors.toml` | Omarchy 4 palette. Drives generated Hyprland, Neovim, terminal, VS Code, and shell colors; `btop.theme` is shipped directly. |
 | `shell.toml` | Omarchy 4 shell surfaces: bar, popups, notifications, launcher, menu, polkit, lock, image picker. |
-| `backgrounds/` | Three original 3840×2160 wallpapers. |
+| `backgrounds/` | 3840×2160 wallpaper. |
 | `preview.png` | Theme picker preview. Placeholder until you capture a real screenshot. |
 | `unlock.png` | 800×188 transparent Plymouth/SDDM logo, already in phosphor green. |
 | `preview-unlock.png` | 1920×1080 lock-screen preview generated with Omarchy's own layout. |
@@ -199,13 +199,13 @@ rules, inactive chrome, and decorative labels — never for body copy.
 
 ## Wallpapers
 
-Three 4K originals, no film stills or logos:
+One 4K wallpaper:
 
-- `01-muthur-radar.jpg` — MU/TH/UR radar sweep and a quiet readout.
-- `02-sevastopol-corridor.jpg` — one-point corridor, amber emergency strips.
-- `03-crew-manifest.jpg` — crew manifest and a faint `07`.
+- `1.png` — Alien: Isolation 2 key art: rain, a detector glow, and a lot of
+  dark. Source: [Wallhaven `poyeoe`](https://wallhaven.cc/w/poyeoe), uploaded by
+  Shrorias. It remains the property of its original owner.
 
-Cycle them with `Super + Ctrl + W`, or:
+Cycle it with `Super + Ctrl + W`, or:
 
 ```bash
 omarchy theme bg next
@@ -329,8 +329,10 @@ what was and was not verified.
 - Structure and Omarchy conventions follow
   [HANCORE-linux/omarchy-solitude-theme](https://github.com/HANCORE-linux/omarchy-solitude-theme)
   and the official Omarchy theme documentation.
-- All wallpapers, the wordmark, and the preview are original work generated for
-  this theme.
+- The wallpaper is Alien: Isolation 2 art via
+  [Wallhaven](https://wallhaven.cc/w/poyeoe), uploaded by Shrorias; it remains
+  the property of its original owner. The wordmark and preview are original work
+  generated for this theme.
 - Neovim colors use [aether.nvim](https://github.com/omacom/aether.nvim), the
   engine Omarchy ships.
 
