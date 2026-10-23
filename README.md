@@ -19,11 +19,11 @@ best-effort legacy files for Omarchy 2.x/3.x and are ignored by Omarchy 4.
 ### Omarchy 4 (recommended)
 
 ```bash
-omarchy theme install https://github.com/LiamTheCreat0r/Omarchy-Nostromo
+omarchy theme install https://github.com/LiamTheCreat0r/omarchy-nostromo-theme
 ```
 
 The installer clones the repo, derives the theme name from its slug, and applies
-it. This repo's slug (`Omarchy-Nostromo`) installs as `nostromo`; the
+it. This repo's slug (`omarchy-nostromo-theme`) installs as `nostromo`; the
 recommended convention is `omarchy-[themename]-theme`. A slug that produces a
 different name installs under that name instead. You can also use
 **Install → Style → Theme** in the Omarchy menu.
@@ -49,7 +49,7 @@ omarchy theme remove nostromo
 ### Manual / local install
 
 ```bash
-git clone https://github.com/LiamTheCreat0r/Omarchy-Nostromo \
+git clone https://github.com/LiamTheCreat0r/omarchy-nostromo-theme \
   ~/.config/omarchy/themes/nostromo
 omarchy theme set nostromo
 ```
