@@ -2,6 +2,49 @@
 
 Everything here is optional. Nothing in this folder is enabled by the theme.
 
+## Font
+
+The theme bundles Blex Mono (IBM Plex Mono) in `../fonts/`. Omarchy never runs
+scripts from a theme directory and never scans one for fonts, so registration is
+a separate step:
+
+```bash
+~/.local/state/omarchy/current/theme/extras/install-font.sh
+```
+
+`install-font.sh` copies the two faces into `~/.local/share/fonts`, runs
+`fc-cache`, verifies fontconfig sees them, and calls
+`omarchy font set "BlexMono Nerd Font Mono"`. It exits early if Blex is already
+the monospace font, so it is safe to run again.
+
+To automate it, copy the example hook into your own hooks directory:
+
+```bash
+install -Dm755 ~/.local/state/omarchy/current/theme/extras/theme-set.example \
+  ~/.config/omarchy/hooks/theme-set
+```
+
+Omarchy runs `~/.config/omarchy/hooks/theme-set <theme-name>` after every theme
+change. The example exits unless the theme is `nostromo`, then runs the install
+script. Delete the file to stop the automation.
+
+Warnings:
+
+- `omarchy font set` is global, not per theme. It writes the fontconfig
+  `monospace` alias to `~/.config/fontconfig/fonts.conf` and restarts the shell.
+  Switching to another theme keeps Blex Mono selected.
+- `omarchy theme update` only pulls the repository. Run
+  `omarchy theme set nostromo` afterwards to restage the files.
+
+Manual fallback:
+
+```bash
+install -m 644 ~/.local/state/omarchy/current/theme/fonts/*.ttf \
+  ~/.local/share/fonts/
+fc-cache -f
+omarchy font set "BlexMono Nerd Font Mono"
+```
+
 ## CRT shader
 
 `crt.frag` adds subtle scanlines, a gentle barrel curve, and a vignette. It does

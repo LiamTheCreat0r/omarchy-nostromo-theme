@@ -1,0 +1,17 @@
+#!/bin/sh
+# NOSTROMO — optional theme-set hook.
+#
+# Omarchy runs ~/.config/omarchy/hooks/theme-set <theme-name> after every theme
+# change, but it never runs anything from a theme directory. Copy this file into
+# your hooks directory to register and select the bundled font whenever Nostromo
+# is applied:
+#
+#   install -Dm755 ~/.local/state/omarchy/current/theme/extras/theme-set.example \
+#     ~/.config/omarchy/hooks/theme-set
+#
+# Remove the file to stop the automation.
+set -eu
+
+[ "${1:-}" = "nostromo" ] || exit 0
+
+exec "$HOME/.local/state/omarchy/current/theme/extras/install-font.sh"

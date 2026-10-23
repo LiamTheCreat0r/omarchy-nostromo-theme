@@ -28,6 +28,12 @@ recommended convention is `omarchy-[themename]-theme`. A slug that produces a
 different name installs under that name instead. You can also use
 **Install → Style → Theme** in the Omarchy menu.
 
+Then register the bundled font:
+
+```bash
+~/.local/state/omarchy/current/theme/extras/install-font.sh
+```
+
 To apply it again later:
 
 ```bash
@@ -39,6 +45,10 @@ To update an installed copy:
 ```bash
 omarchy theme update
 ```
+
+`omarchy theme update` only pulls the repository. Run `omarchy theme set nostromo`
+afterwards to restage the files, then `install-font.sh` again if the bundled
+font changed.
 
 To remove it:
 
@@ -52,6 +62,7 @@ omarchy theme remove nostromo
 git clone https://github.com/LiamTheCreat0r/omarchy-nostromo-theme \
   ~/.config/omarchy/themes/nostromo
 omarchy theme set nostromo
+~/.local/state/omarchy/current/theme/extras/install-font.sh
 ```
 
 Omarchy 4 deliberately drops `*.lua`, terminal configs, and `vscode.json` from
@@ -80,20 +91,27 @@ cava_theme        cava gradient
 
 - Omarchy 4.0 or newer (developed against the 4.x theme layout; 4.0.6 was the
   stable reference).
-- A monospace font. The theme is designed around **JetBrains Mono**; Omarchy
-  normally provides `JetBrainsMono Nerd Font`.
+- **Blex Mono (IBM Plex Mono) Nerd Font**, bundled in `fonts/`. The theme is
+  designed around it; JetBrains Mono, which Omarchy ships, is the fallback.
 - **Yaru-sage** icons for the file manager (part of the standard Yaru set).
 
-Install the font and set it as the system monospace face:
+Register the bundled font after applying the theme:
 
 ```bash
-sudo pacman -S ttf-jetbrains-mono-nerd
-omarchy font set "JetBrainsMono Nerd Font"
+~/.local/state/omarchy/current/theme/extras/install-font.sh
 ```
 
-`Share Tech Mono` (AUR: `ttf-share-tech-mono`) is an optional display face for
-wallpapers or labels. It has no Nerd Font glyphs, so do not use it as the
-terminal font unless you do not need icons.
+The script copies the two faces into `~/.local/share/fonts`, runs `fc-cache`,
+and calls `omarchy font set "BlexMono Nerd Font Mono"`. That last step is
+global: it writes the fontconfig `monospace` alias, restarts the shell, and
+survives theme switches. Omarchy never runs scripts from a theme directory, so
+this is manual unless you add the optional `theme-set` hook described in
+`extras/README.md`.
+
+Nerd Fonts patches IBM Plex Mono and renames it to Blex Mono, which respects
+IBM's Reserved Font Name "Plex". The `Mono` variant keeps icon glyphs one cell
+wide, which the bar and terminal need. Its x-height is slightly smaller than
+JetBrains Mono's, so `[font] base-size` is 13 rather than 12.
 
 ## Palette
 
@@ -166,6 +184,7 @@ rules, inactive chrome, and decorative labels — never for body copy.
 | `colors.toml` | Omarchy 4 palette. Drives generated Hyprland, Neovim, terminal, VS Code, and shell colors; `btop.theme` is shipped directly. |
 | `shell.toml` | Omarchy 4 shell surfaces: bar, popups, notifications, launcher, menu, polkit, lock, image picker. |
 | `backgrounds/` | 3840×2160 wallpaper. |
+| `fonts/` | Bundled Blex Mono (IBM Plex Mono) Nerd Font, Regular and Bold, OFL 1.1. |
 | `preview.png` | Theme picker preview. Placeholder until you capture a real screenshot. |
 | `unlock.png` | 800×188 transparent Plymouth/SDDM logo, already in phosphor green. |
 | `preview-unlock.png` | 1920×1080 lock-screen preview generated with Omarchy's own layout. |
@@ -182,7 +201,9 @@ rules, inactive chrome, and decorative labels — never for body copy.
 | `cava_theme` | Legacy/standalone cava gradient. |
 | `extras/crt.frag` | Optional CRT shader: scanlines, barrel curve, vignette. |
 | `extras/toggle-crt.sh` | Toggle the shader through `hyprctl`. |
-| `extras/README.md` | Shader enable/disable and keybind instructions. |
+| `extras/install-font.sh` | Register the bundled font and select it as monospace. |
+| `extras/theme-set.example` | Optional hook to run that automatically on theme switch. |
+| `extras/README.md` | Font and shader setup, enable/disable, keybinds. |
 
 ### Not shipped
 
@@ -216,7 +237,8 @@ Omarchy stores your choice per theme and restores it when you switch back.
 
 ## Replacing the preview
 
-`preview.png` is a labeled placeholder. On the running desktop:
+`preview.png` is a labeled placeholder. Register the font first, so the
+screenshot shows the type the theme is designed around. On the running desktop:
 
 ```bash
 grim preview.png
@@ -289,6 +311,9 @@ Run these on an Omarchy 4 machine after installing:
 omarchy theme list | grep -i nostromo
 omarchy theme set nostromo
 omarchy theme current
+fc-match monospace
+fc-list | grep -i blex
+omarchy font list | grep -i blex
 hyprctl getoption general:col.active_border
 hyprctl getoption decoration:rounding
 hyprctl getoption decoration:blur.enabled
@@ -296,6 +321,10 @@ hyprctl getoption decoration:shadow.enabled
 omarchy theme bg next
 omarchy theme bg current
 ```
+
+`fc-match monospace` should name `BlexMono Nerd Font Mono`, and the bar icons
+should stay one cell wide. If it still names JetBrains Mono, run
+`install-font.sh` and check the output.
 
 Notification urgency:
 
@@ -319,6 +348,8 @@ what was and was not verified.
   are the launcher, menu, and polkit scrims behind their cards.
 - **Thin phosphor borders.** 1–2px, active border full `#7dff8a`, inactive
   `#2f7a3a`.
+- **One typeface.** Blex Mono (IBM Plex Mono) everywhere: industrial, slightly
+  narrow, and legible at 13px. No display face competing with it.
 - **Monospace and caps.** Labels are uppercase, spaced, and small. Body text is
   sentence case for readability.
 - **Amber is a warning, not a second accent.** Red-orange is reserved for
@@ -333,6 +364,9 @@ what was and was not verified.
   [Wallhaven](https://wallhaven.cc/w/poyeoe), uploaded by Shrorias; it remains
   the property of its original owner. The wordmark and preview are original work
   generated for this theme.
+- IBM Plex Mono © IBM Corp., licensed under the SIL Open Font License 1.1 and
+  patched by [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) as Blex Mono.
+  The license ships in [`fonts/LICENSE.txt`](fonts/LICENSE.txt).
 - Neovim colors use [aether.nvim](https://github.com/omacom/aether.nvim), the
   engine Omarchy ships.
 

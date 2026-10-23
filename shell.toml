@@ -53,7 +53,9 @@ scale           = 1.0
 scale-with-font = true
 
 [font]
-base-size = 12
+# Blex Mono's x-height is smaller than JetBrains Mono's (516 vs 550 per 1000 em),
+# so 13 restores the apparent size the theme was designed around.
+base-size = 13
 
 [popups]
 background       = "#0a0c09"
